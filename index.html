@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>matrix示例</title>
+    <style>
+        .rotate__box {
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+        .rotate {
+            transform: rotate(60deg);
+        }
+        .gap{
+            height: 200px;
+        }
+    </style>
+    <script src='./dist/index.js'></script>
+</head>
+<script>
+    const matrix = transform.getStyleMatrix2d(transform.rotate(60))
+    console.error(matrix.join(','))
+    document.querySelector('style').sheet.insertRule(`.matrix{ transform:matrix(${matrix})}`, 1)
+</script>
+
+<body>
+    <div class='rotate__box rotate'></div>
+
+    <div class='rotate__box matrix' style='background:indigo'></div>
+
+    <div class='gap'></div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <svg width='1024' height='1024' viewBox="0 0 1024 1024">
+            <rect  fill='orange' x="0" y="0" width="100" height="100" transform="rotate(45, 100, 100)" />
+            <rect  fill='red' x="0" y="0" width="100" height="100" transform="matrix(0.7071067811865476,0.7071067811865475,-0.7071067811865475,0.7071067811865476,99.99999999999999,-41.42135623730951)" />
+            <!-- <rect  fill='red' x="0" y="0" width="100" height="100" transform="matrix(0.5253219888177297,0.8509035245341184,-0.8509035245341184,0.5253219888177297,132.55815357163885,-37.62255133518482)" /> -->
+        </svg>
+      </svg>
+</body>
+</html>
