@@ -39,10 +39,10 @@ const translateX = (x) => {
     ]
 }
 
-const translateY = (x) => {
+const translateY = (y) => {
     return [
         1, 0, 0,
-        0, 1, 1,
+        0, 1, y,
         0, 0, 1
     ]
 }
@@ -160,4 +160,5 @@ export {
     rotate,
     getCoordinateTransform,
     getStyleMatrix2d,
+    combine,
 }
