@@ -54,7 +54,8 @@ export const toRad =  (deg) =>  {
         return gradToRad(value)
       case 'turn':
         return turnToRad(value)
-      case 'rad':
+      case 'rad': // 弧度值
+        return value
       case 'deg':        
       default:
         return degToRad(value)

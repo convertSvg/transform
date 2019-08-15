@@ -10,20 +10,32 @@
             width: 100px;
             height: 100px;
             background: green;
+            /* position: absolute; */
         }
         .rotate {
-            transform: rotate(60deg);
+            /* transform: rotate(60deg); */
+            /* transform-origin: 50px 100px; */
+            transform: rotate3d(1, 1, 1, 60deg);
+            /* transform: matrix3d(1, 0, 0, 0,  0, 1, 0, 0,  0, 0, 1, 0,  100, 100, 1, 1); */
         }
         .gap{
             height: 200px;
+        }
+        .matrix{
+            opacity: .2;
+            /* transform: matrix3d(1, 0, 0, 0,  0, 1, 0, 0,  0, 0, 1, 0,  10px, 40px, -10px, 0)
+             */
+             /* transform: matrix3d(1, 0, 0, 0,  0, 1, 0, 0,  0, 0, 1, 0,  100, 100, 1, 1); */
+             /* transform: matrix3d(0.666667, 0.666667, -0.333333, 0, -0.333333, 0.666667, 0.666667, 0, 0.666667, -0.333333, 0.666667, 0, 0, 0, 0, 1) */
         }
     </style>
     <script src='./dist/index.js'></script>
 </head>
 <script>
-    const matrix = transform.getStyleMatrix2d(transform.rotate(60))
-    console.error(matrix.join(','))
-    document.querySelector('style').sheet.insertRule(`.matrix{ transform:matrix(${matrix})}`, 1)
+    const { matrix3d, matrix } = transform
+    const matrixStr = matrix3d.getStyleMatrix3d(matrix3d.rotate3d(1, 1, 1, '60deg'))
+    console.error(matrixStr)
+    document.querySelector('style').sheet.insertRule(`.matrix{ transform: matrix3d(${matrixStr})}`, 1)
 </script>
 
 <body>

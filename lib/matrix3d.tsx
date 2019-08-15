@@ -184,13 +184,13 @@ const rotate = (deg, cx = 0, cy=cx) => {
  * @param z <number> 0 ~ 1
  * @param deg <angle>
  * 幂运算符（**）ECMAScript 2016 (ES 7) 新特性
+ * rotate3d转换逻辑见 https://drafts.csswg.org/css-transforms-2/#Rotate3dDefined
  */
 const rotate3d = (x, y, z, deg) => {
-    const rad = toRad(deg)
+    // const rad = toRad(deg)
     const radZ = -atan(y / x)
     const radY = -atan(sqrt(x * x + y * y) / z)
-
-    return combine3d(rotateZ(-radZ), rotateY(-radY), rotateZ(rad),  rotateY(radY), rotateZ(radZ))
+    return combine3d(rotateZ(-radZ + 'rad'), rotateY(-radY  + 'rad'), rotateZ(deg),  rotateY(radY  + 'rad'), rotateZ(radZ  + 'rad'))
 }
 
 const rotateX = (deg) => {
