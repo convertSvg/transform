@@ -110,7 +110,6 @@ const scaleY = (scaley) => {
 
 // https://www.w3.org/TR/SVG/coords.html#TransformProperty  rotate(angle, cx, cy)
 const rotate = (deg, cx = 0, cy=cx) => {
-
     if(deg !== 0){
         const α = toRad(deg)
         const m1 = translate(cx, cy)
@@ -120,7 +119,7 @@ const rotate = (deg, cx = 0, cy=cx) => {
             0, 0, 1
         ]
         const m3 = translate(-cx, -cy)
-        return combine(combine(m1, m2), m3) 
+        return combine(m1, m2, m3)
     } else {
         return Matrix
     }

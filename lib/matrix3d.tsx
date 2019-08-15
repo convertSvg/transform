@@ -159,6 +159,24 @@ const scaleZ = (scalez) => {
 }
 
 // https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function/rotate3d
+
+const rotate = (deg, cx = 0, cy=cx) => {
+    if(deg !== 0){
+        const α = toRad(deg)
+        const m1 = translate(cx, cy)
+        const m2 = [
+            cos(α), -sin(α), 0, 0,
+            sin(α), cos(α), 0, 0,
+            0, 0, 1, 0,
+            0, 0, 0, 1
+        ]
+        const m3 = translate(-cx, -cy)
+        return combine3d(m1, m2, m3) 
+    } else {
+        return Matrix3d
+    }
+}
+
 /**
  * rotate3d
  * @param x <number> 0 ~ 1
@@ -232,7 +250,6 @@ const getStyleMatrix3d = (m = Matrix3d) => {
     ].join(',')
 }
 
-
 export {
     translate,
     translate3d,
@@ -247,6 +264,7 @@ export {
     scaleX,
     scaleY,
     scaleZ,
+    rotate,
     rotate3d,
     rotateX,
     rotateY,
